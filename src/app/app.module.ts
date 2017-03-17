@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule,Routes} from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +12,16 @@ import { AddListingsComponent } from './components/add-listings/add-listings.com
 import { EditListingsComponent } from './components/edit-listings/edit-listings.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListingComponent } from './components/listing/listing.component';
+import {FirebaseService} from './service/firebase.service';
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyCtijB47BeST5bOgkBgv12tyvb54qBFPdA",
+    authDomain: "proplisting-4727a.firebaseapp.com",
+    databaseURL: "https://proplisting-4727a.firebaseio.com",
+    storageBucket: "proplisting-4727a.appspot.com",
+    messagingSenderId: "406796120883"
+  };
+
 
 const appRoutes:Routes=[
 {
@@ -31,6 +42,8 @@ const appRoutes:Routes=[
 }
 ]
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,9 +62,10 @@ const appRoutes:Routes=[
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
