@@ -13,6 +13,7 @@ import { EditListingsComponent } from './components/edit-listings/edit-listings.
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListingComponent } from './components/listing/listing.component';
 import {FirebaseService} from './service/firebase.service';
+import {FlashMessagesModule} from 'angular2-flash-messages';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyCtijB47BeST5bOgkBgv12tyvb54qBFPdA",
@@ -44,6 +45,11 @@ const appRoutes:Routes=[
   path:'add-listings',
   component:AddListingsComponent
 
+},
+{
+  path:'listing/:id',
+  component:ListingComponent
+
 }
 ]
 
@@ -68,7 +74,8 @@ const appRoutes:Routes=[
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(firebaseConfig,firebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig,firebaseAuthConfig),
+    FlashMessagesModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
