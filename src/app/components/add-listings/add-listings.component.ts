@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FirebaseService} from '../../service/firebase.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-listings',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddListingsComponent implements OnInit {
 
-  constructor() { }
+	title:any;
+	owner:any;
+	city:any;
+	bedrooms:any;
+	price:any;
+	type:any;
+	image:any;
+
+  constructor(
+  	private firebaseService:FirebaseService,
+  	private router:Router
+  	) { }
 
   ngOnInit() {
+  }
+
+  onAddSubmit(){
+
+  	let listing={
+  		title:this.title,
+  		city:this.city,
+  		owner:this.owner,
+  		bedrooms:this.bedrooms,
+  		price:this.price,
+  		type:this.type
+  	}
+
+  	this.firebaseService.addListing(listing);
+
+  	this.router.navigate(['listings']);
+
   }
 
 }
