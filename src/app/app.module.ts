@@ -30,27 +30,13 @@ const firebaseAuthConfig = {
 
 
 const appRoutes:Routes=[
-{
-  path:'',
-  component:HomeComponent
 
-},
-{
-  path:'listings',
-  component:ListingsComponent
+{path:'',component:HomeComponent},
+{path:'listings', component:ListingsComponent},
+{path:'add-listings',component:AddListingsComponent},
+{path:'listing/:id',component:ListingComponent},
+{path:'edit-listing/:id',component:EditListingsComponent}
 
-}
-,
-{
-  path:'add-listings',
-  component:AddListingsComponent
-
-},
-{
-  path:'listing/:id',
-  component:ListingComponent
-
-}
 ]
 
 
@@ -58,15 +44,11 @@ const appRoutes:Routes=[
 @NgModule({
   declarations: [
     AppComponent,
-    
     HomeComponent,
     ListingsComponent,
     AddListingsComponent,
-   
     EditListingsComponent,
-   
     NavbarComponent,
-   
     ListingComponent
   ],
   imports: [
